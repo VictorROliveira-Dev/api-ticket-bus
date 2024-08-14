@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "PwRJk1KnHWA=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\victo\\source\\repos\\APIPassagens\\APIPassagens.Core\\APIPassagens.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\victo\\.nuget\\packages\\mediatr\\12.4.0\\mediatr.12.4.0.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
