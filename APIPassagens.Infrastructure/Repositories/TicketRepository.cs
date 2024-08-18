@@ -1,32 +1,79 @@
 ﻿using APIBusService.Core.Abstractions;
 using APIBusService.Core.Entities;
+using APIBusService.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace APIBusService.Infrastructure.Repositories;
 
 public class TicketRepository : ITicketRepository
 {
-    public Task<Ticket> AddTicket(Ticket ticket)
+    private readonly AppDbContext _context;
+
+    public TicketRepository(AppDbContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
     }
 
-    public Task<bool> DeleteTicket(int id)
+    public async Task<Ticket> AddTicket(Ticket ticket)
     {
-        throw new NotImplementedException();
+        if (ticket == null)
+        {
+            throw new ArgumentException(nameof(ticket));
+        }
+
+        await _context.Tickets.AddAsync(ticket);
+        await _context.SaveChangesAsync();
+
+        return ticket;
     }
 
-    public Task<IEnumerable<Ticket>> GetAllTickets()
+    public async Task<bool> DeleteTicket(int id)
     {
-        throw new NotImplementedException();
+        var ticket = await _context.Tickets.FirstOrDefaultAsync(t => t.Id == id);
+        if (ticket == null)
+        {
+            throw new InvalidOperationException("Ticket id not found.");
+        }
+
+        _context.Tickets.Remove(ticket);
+
+        return true;
     }
 
-    public Task<Ticket> GetTicketById(int id)
+    public async Task<IEnumerable<Ticket>> GetAllTickets()
     {
-        throw new NotImplementedException();
+        var ticketList = await _context.Tickets.ToListAsync();
+        return ticketList ?? Enumerable.Empty<Ticket>();
     }
 
-    public Task<Ticket> UpdateTicket(Ticket ticket)
+    public async Task<Ticket> GetTicketById(int id)
     {
-        throw new NotImplementedException();
+        var ticket = await _context.Tickets.FirstOrDefaultAsync(t => t.Id == id);
+
+        if (ticket == null)
+        {
+            throw new InvalidOperationException("Ticket id not found.");
+        }
+
+        return ticket;
+    }
+
+    public async Task<Ticket> UpdateTicket(Ticket ticket, int id)
+    {
+        var ticketId = await _context.Tickets.FirstOrDefaultAsync(t => t.Id == id);
+
+        if (ticketId == null)
+        {
+            throw new InvalidOperationException("Ticket id not found");
+        }
+
+        ticketId.DepartureDate = ticket.DepartureDate;
+        ticketId.ReturnDate = ticket.ReturnDate;
+
+        _context.Update(ticketId);
+        await _context.SaveChangesAsync();
+
+        return ticketId;
     }
 }

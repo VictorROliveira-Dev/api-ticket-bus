@@ -26,7 +26,7 @@ public class UpdateTicketCommandHandler : IRequestHandler<UpdateTicketCommand, T
         ticket.DepartureDate = request.DepartureDate;
         ticket.ReturnDate = request.ReturnDate;
 
-        await _repository.UpdateTicket(ticket);
+        await _repository.UpdateTicket(ticket, ticket.Id);
 
         return new TicketDto
         {

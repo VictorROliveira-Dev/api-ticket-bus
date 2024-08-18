@@ -45,7 +45,7 @@ public class CreateTicketCommandHandler : IRequestHandler<CreateTicketCommand, T
             TicketCode = ticket.TicketCode,
             DepartureDate = ticket.DepartureDate,
             ReturnDate = ticket.ReturnDate,
-            UserId = request.UserId,
+            UserId = ticket.UserId,
         };
     }
 
