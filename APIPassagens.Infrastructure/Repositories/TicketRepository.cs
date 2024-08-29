@@ -31,6 +31,7 @@ public class TicketRepository : ITicketRepository
     public async Task<bool> DeleteTicket(int id)
     {
         var ticket = await _context.Tickets.FirstOrDefaultAsync(t => t.Id == id);
+        
         if (ticket == null)
         {
             throw new InvalidOperationException("Ticket id not found.");

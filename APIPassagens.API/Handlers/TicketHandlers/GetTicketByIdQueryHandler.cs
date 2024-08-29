@@ -25,7 +25,7 @@ public class GetTicketByIdQueryHandler : IRequestHandler<GetTicketByIdQuery, Tic
 
         return new TicketDto
         {
-            Id = request.Id,
+            Id = ticket.Id,
             TicketCode = ticket.TicketCode,
             DepartureDate = ticket.DepartureDate,
             ReturnDate = ticket.ReturnDate,

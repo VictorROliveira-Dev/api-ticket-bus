@@ -1,32 +1,80 @@
 ﻿using APIBusService.Core.Abstractions;
 using APIBusService.Core.Entities;
+using APIBusService.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace APIBusService.Infrastructure.Repositories;
 
 public class UserRepository : IUserRepository
 {
-    public Task<User> AddUser(User user)
+    private readonly AppDbContext _context;
+
+    public UserRepository(AppDbContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
     }
 
-    public Task<bool> DeleteUser(int id)
+    public async Task<User> AddUser(User user)
     {
-        throw new NotImplementedException();
+        if (user == null)
+        {
+            throw new ArgumentException(nameof(user));
+        }
+
+        await _context.Users.AddAsync(user);
+        await _context.SaveChangesAsync();
+
+        return user;
     }
 
-    public Task<IEnumerable<User>> GetAllUsers()
+    public async Task<User> DeleteUser(int id)
     {
-        throw new NotImplementedException();
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+        if (user == null)
+        {
+            throw new InvalidOperationException("User not found.");
+        }
+
+        _context.Users.Remove(user);
+
+        return new User { Id = id };
     }
 
-    public Task<User> GetUserById(int id)
+    public async Task<IEnumerable<User>> GetAllUsers()
     {
-        throw new NotImplementedException();
+        var users = await _context.Users.ToListAsync();
+        return users ?? Enumerable.Empty<User>();
     }
 
-    public Task<User> UpdateUser(User user)
+    public async Task<User> GetUserById(int id)
     {
-        throw new NotImplementedException();
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+        if (user == null)
+        {
+            throw new InvalidOperationException("User not found.");
+        }
+
+        return user;
+    }
+
+    public async Task<User> UpdateUser(User user, int id)
+    {
+        var model = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+        if (model == null)
+        {
+            throw new InvalidOperationException("User not found.");
+        }
+
+        model.Name = user.Name;
+        model.Email = user.Email;
+        model.Age = user.Age;
+
+        _context.Users.Update(model);
+        await _context.SaveChangesAsync();
+
+        return model;
     }
 }

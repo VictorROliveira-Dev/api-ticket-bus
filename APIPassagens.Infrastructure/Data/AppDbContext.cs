@@ -17,12 +17,14 @@ public class AppDbContext : DbContext
             entity.HasKey(e => e.Id);
             entity.Property(e => e.TicketCode).IsRequired();
             entity.HasOne(e => e.User).WithMany(u => u.Tickets).HasForeignKey(e => e.UserId);
+            entity.HasIndex(e => new { e.TicketCode, e.UserId }).IsUnique();
         });
 
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
+            entity.Property(e => e.Email).IsRequired().HasMaxLength(100);
             entity.Property(e => e.Age).IsRequired();
         });
     }
