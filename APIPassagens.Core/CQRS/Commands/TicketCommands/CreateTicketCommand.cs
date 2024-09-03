@@ -8,4 +8,5 @@ public class CreateTicketCommand : IRequest<TicketDto>
     public DateTime DepartureDate { get; set; }
     public DateTime? ReturnDate { get; set; }
     public int UserId { get; set; }
+    public string Email { get; set; }
 }

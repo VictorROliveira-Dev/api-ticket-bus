@@ -2,6 +2,7 @@
 using APIBusService.Core.CQRS.Commands.TicketCommands;
 using APIBusService.Core.DTOs;
 using APIBusService.Core.Entities;
+using APIPassagens.Core.Events;
 using MediatR;
 
 namespace APIBusServiceAPI.Handlers.TicketHandlers;
@@ -9,12 +10,14 @@ namespace APIBusServiceAPI.Handlers.TicketHandlers;
 public class CreateTicketCommandHandler : IRequestHandler<CreateTicketCommand, TicketDto>
 {
     private readonly ITicketRepository _ticketrepository;
+    private readonly IMediator _mediator;
     private IUserRepository _userRepository;
 
-    public CreateTicketCommandHandler(ITicketRepository ticketrepository, IUserRepository userRepository)
+    public CreateTicketCommandHandler(ITicketRepository ticketrepository, IUserRepository userRepository, IMediator mediator)
     {
         _ticketrepository = ticketrepository;
         _userRepository = userRepository;
+        _mediator = mediator;
     }
 
     public async Task<TicketDto> Handle(CreateTicketCommand request, CancellationToken cancellationToken)
@@ -39,6 +42,15 @@ public class CreateTicketCommandHandler : IRequestHandler<CreateTicketCommand, T
 
         await _ticketrepository.AddTicket(ticket);
 
+        var ticketCreatedEvent = new TicketCreatedEvent
+        {
+            TicketId = ticket.Id,
+            Email = request.Email,
+            TicketCode = ticket.TicketCode,
+        };
+
+        await _mediator.Publish(ticketCreatedEvent, cancellationToken);
+
         return new TicketDto
         {
             Id = ticket.Id,
@@ -46,6 +58,7 @@ public class CreateTicketCommandHandler : IRequestHandler<CreateTicketCommand, T
             DepartureDate = ticket.DepartureDate,
             ReturnDate = ticket.ReturnDate,
             UserId = ticket.UserId,
+            Email = user.Email
         };
     }
 
