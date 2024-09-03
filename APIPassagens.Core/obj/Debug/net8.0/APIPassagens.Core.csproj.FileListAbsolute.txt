@@ -1,0 +1,13 @@
+C:\Users\victo\source\repos\APIPassagens\APIPassagens.Core\obj\Debug\net8.0\APIPassagens.Core.csproj.AssemblyReference.cache
+C:\Users\victo\source\repos\APIPassagens\APIPassagens.Core\obj\Debug\net8.0\APIPassagens.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\victo\source\repos\APIPassagens\APIPassagens.Core\obj\Debug\net8.0\APIPassagens.Core.AssemblyInfoInputs.cache
+C:\Users\victo\source\repos\APIPassagens\APIPassagens.Core\obj\Debug\net8.0\APIPassagens.Core.AssemblyInfo.cs
+C:\Users\victo\source\repos\APIPassagens\APIPassagens.Core\obj\Debug\net8.0\APIPassagens.Core.csproj.CoreCompileInputs.cache
+C:\Users\victo\source\repos\APIPassagens\APIPassagens.Core\obj\Debug\net8.0\APIPassagens.Core.sourcelink.json
+C:\Users\victo\source\repos\APIPassagens\APIPassagens.Core\bin\Debug\net8.0\APIPassagens.Core.deps.json
+C:\Users\victo\source\repos\APIPassagens\APIPassagens.Core\bin\Debug\net8.0\APIPassagens.Core.dll
+C:\Users\victo\source\repos\APIPassagens\APIPassagens.Core\bin\Debug\net8.0\APIPassagens.Core.pdb
+C:\Users\victo\source\repos\APIPassagens\APIPassagens.Core\obj\Debug\net8.0\APIPassagens.Core.dll
+C:\Users\victo\source\repos\APIPassagens\APIPassagens.Core\obj\Debug\net8.0\refint\APIPassagens.Core.dll
+C:\Users\victo\source\repos\APIPassagens\APIPassagens.Core\obj\Debug\net8.0\APIPassagens.Core.pdb
+C:\Users\victo\source\repos\APIPassagens\APIPassagens.Core\obj\Debug\net8.0\ref\APIPassagens.Core.dll

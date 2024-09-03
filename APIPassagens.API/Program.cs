@@ -13,6 +13,8 @@ using System.Net.Mail;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddUserSecrets<Program>();
+
 builder.Services.Configure<RabbitMqConfig>(builder.Configuration.GetSection("RabbitMq"));
 
 builder.Services.AddDbContext<AppDbContext>(options =>

@@ -1,8 +1,4 @@
-﻿using APIPassagens.Core.Entities;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection.Metadata;
-
-namespace APIBusService.Core.Entities;
+﻿namespace APIBusService.Core.Entities;
 
 public class Ticket
 {

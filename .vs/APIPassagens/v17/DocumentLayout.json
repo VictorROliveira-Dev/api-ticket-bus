@@ -5,10 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{70AB5EB7-C79E-4A85-BBB4-9FF5601D6087}|APIPassagens.API\\APIPassagens.API.csproj|c:\\users\\victo\\source\\repos\\apipassagens\\apipassagens.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{70AB5EB7-C79E-4A85-BBB4-9FF5601D6087}|APIPassagens.API\\APIPassagens.API.csproj|solutionrelative:apipassagens.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70AB5EB7-C79E-4A85-BBB4-9FF5601D6087}|APIPassagens.API\\APIPassagens.API.csproj|c:\\users\\victo\\source\\repos\\apipassagens\\apipassagens.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{70AB5EB7-C79E-4A85-BBB4-9FF5601D6087}|APIPassagens.API\\APIPassagens.API.csproj|solutionrelative:apipassagens.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,22 +24,9 @@
               "RelativeDocumentMoniker": "APIPassagens.API\\Program.cs",
               "ToolTip": "C:\\Users\\victo\\source\\repos\\APIPassagens\\APIPassagens.API\\Program.cs",
               "RelativeToolTip": "APIPassagens.API\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABNAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAowA8AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T01:09:30.045Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\victo\\source\\repos\\APIPassagens\\APIPassagens.API\\appsettings.json",
-              "RelativeDocumentMoniker": "APIPassagens.API\\appsettings.json",
-              "ToolTip": "C:\\Users\\victo\\source\\repos\\APIPassagens\\APIPassagens.API\\appsettings.json",
-              "RelativeToolTip": "APIPassagens.API\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-03T01:07:46.903Z",
+              "WhenOpened": "2024-09-03T14:03:49.037Z",
               "EditorCaption": ""
             }
           ]
