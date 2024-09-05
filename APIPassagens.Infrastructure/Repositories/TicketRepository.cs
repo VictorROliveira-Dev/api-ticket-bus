@@ -2,7 +2,6 @@
 using APIBusService.Core.Entities;
 using APIBusService.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace APIBusService.Infrastructure.Repositories;
 

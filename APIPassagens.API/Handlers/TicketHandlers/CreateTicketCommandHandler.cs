@@ -29,6 +29,11 @@ public class CreateTicketCommandHandler : IRequestHandler<CreateTicketCommand, T
             throw new Exception("User not found");
         }
 
+        if (request.ReturnDate.HasValue && request.ReturnDate.Value < request.DepartureDate)
+        {
+            throw new Exception("The return date cannot be earlier than the departure date.");
+        }
+
         var ticketCode = GenerateTrackingCode();
 
         var ticket = new Ticket
@@ -47,6 +52,8 @@ public class CreateTicketCommandHandler : IRequestHandler<CreateTicketCommand, T
             TicketId = ticket.Id,
             Email = request.Email,
             TicketCode = ticket.TicketCode,
+            DepartureDate = ticket.DepartureDate,
+            ReturnDate = ticket.ReturnDate,
         };
 
         await _mediator.Publish(ticketCreatedEvent, cancellationToken);
@@ -58,7 +65,7 @@ public class CreateTicketCommandHandler : IRequestHandler<CreateTicketCommand, T
             DepartureDate = ticket.DepartureDate,
             ReturnDate = ticket.ReturnDate,
             UserId = ticket.UserId,
-            Email = user.Email
+            Email = ticket.User.Email
         };
     }
 

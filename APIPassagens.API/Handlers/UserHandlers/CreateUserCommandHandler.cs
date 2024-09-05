@@ -28,6 +28,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, UserD
 
         return new UserDto
         {
+            Id = user.Id,
             Name = user.Name,
             Email = user.Email,
             Age = user.Age,

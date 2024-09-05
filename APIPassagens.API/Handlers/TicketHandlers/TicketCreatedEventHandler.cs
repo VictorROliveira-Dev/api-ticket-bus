@@ -6,22 +6,22 @@ namespace APIPassagens.API.Handlers.TicketHandlers;
 
 public class TicketCreatedEventHandler : INotificationHandler<TicketCreatedEvent>
 {
-    private readonly IMessageBus _messageBus;
+    private readonly IEmailService _emailService;
 
-    public TicketCreatedEventHandler(IMessageBus messageBus)
+    public TicketCreatedEventHandler(IEmailService emailService)
     {
-        _messageBus = messageBus;
+        _emailService = emailService;
     }
 
     public async Task Handle(TicketCreatedEvent notification, CancellationToken cancellationToken)
     {
-        var message = new
-        {
-            notification.TicketId,
-            notification.Email,
-            notification.TicketCode,
-        };
+        // Envia o email utilizando o serviço de email
+        var subject = "Compra de passagem realizada!😁";
+        var body = $"Seu ticket foi criado com sucesso.\n" +
+                   $"Código do ticket: {notification.TicketCode}\n" +
+                   $"Data de Início: {notification.DepartureDate:dd/MM/yyyy}\n" +
+                   $"Data de Retorno: {(notification.ReturnDate.HasValue ? notification.ReturnDate.Value.ToString("dd/MM/yyyy") : "Não aplicável")}";
 
-        await _messageBus.PublishAsync("ticket_created", message);
+        await _emailService.SendEmailAsync(notification.Email, subject, body);
     }
 }
